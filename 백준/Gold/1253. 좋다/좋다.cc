@@ -1,20 +1,14 @@
 #include<iostream>
-#include<algorithm>
 #include<vector>
+#include<algorithm>
 using namespace std;
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-
 	int N;
 	cin >> N;
-
 	
-	int count = 0;
-
 	vector<int>A(N, 0);
+	int count = 0;
 
 	for (int i = 0; i < N; i++) {
 		cin >> A[i];
@@ -22,31 +16,31 @@ int main() {
 	sort(A.begin(), A.end());
 
 	for (int k = 0; k < N; k++) {
-		long find = A[k];//찾고자 하는 값
-		int begin = 0;
+		int find = A[k];
+		int start = 0;
 		int last = N - 1;
 
-		while (begin < last) {
-			if (A[begin] + A[last] == find) {//좋은 수를 찾은 경우, 서로 다른 두 수의 합인지 체크
-				if (begin != k && last != k) {
+		while (start < last) {
+			if (A[start] + A[last] == find) {
+				if (start != k && last != k) {
 					count++;
 					break;
 				}
-				else if (begin == k) {
-					begin++;
+				else if (start == k) {
+					start++;
 				}
 				else if (last == k) {
 					last--;
 				}
 			}
-			else if (A[begin] + A[last] < find) {
-				begin++;
-			}
-			else {
+			else if (A[start] + A[last] > find) {
 				last--;
 			}
-			
+			else {
+				start++;
+			}
 		}
 	}
+
 	cout << count << "\n";
 }
