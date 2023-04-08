@@ -8,14 +8,14 @@ int main() {
 
 	int N;
 	cin >> N;
+	int cnt = 1;
+	int sum = 1;
 	int start_index = 1;
 	int end_index = 1;
-	int sum = 1;//마지막 수(==N)일 경우를 미리 하나 카운트
-	int count = 1;
 
 	while (end_index != N) {
 		if (sum == N) {
-			count++;
+			cnt++;
 			end_index++;
 			sum += end_index;
 		}
@@ -28,6 +28,6 @@ int main() {
 			sum += end_index;
 		}
 	}
-	cout << count << "\n";
+	cout << cnt << "\n";
 	
 }
