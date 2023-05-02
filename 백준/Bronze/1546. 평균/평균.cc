@@ -2,22 +2,22 @@
 using namespace std;
 
 int main() {
-	int n;
-	cin >> n;
-
-	int arr[1000];
-	double max = 0;
+	double arr[1000];
 	double sum = 0;
+	int max = -1;
+	int N;
+	cin >> N;
 
-	for (int i = 0; i < n; i++) {
+	for (int i = 0; i < N; i++) {
 		cin >> arr[i];
-		if (arr[i] > max) {
+		if (max < arr[i]) {
 			max = arr[i];
 		}
 	}
-	for (int i = 0; i < n; i++) {
+
+	for (int i = 0; i < N; i++) {
 		sum += arr[i] / max * 100;
 	}
-	double res = sum / n;
-	cout << res;
+
+	cout << sum / N << endl;
 }
