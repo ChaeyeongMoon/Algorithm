@@ -6,41 +6,38 @@ using namespace std;
 int main() {
 	int N;
 	cin >> N;
-	
-	vector<int>A(N, 0);
-	int count = 0;
+	vector<int>A(N);
 
 	for (int i = 0; i < N; i++) {
 		cin >> A[i];
 	}
 	sort(A.begin(), A.end());
-
+	int count = 0;
 	for (int k = 0; k < N; k++) {
+		int i = 0;
+		int j = N - 1;
 		int find = A[k];
-		int start = 0;
-		int last = N - 1;
 
-		while (start < last) {
-			if (A[start] + A[last] == find) {
-				if (start != k && last != k) {
+		while (i < j) {
+			if (A[i] + A[j] == find) {
+				if (i != k && j != k) {
 					count++;
 					break;
 				}
-				else if (start == k) {
-					start++;
+				else if (i == k) {
+					i++;
 				}
-				else if (last == k) {
-					last--;
+				else if (j == k) {
+					j--;
 				}
 			}
-			else if (A[start] + A[last] > find) {
-				last--;
+			else if (A[i] + A[j] > find) {
+				j--;
 			}
 			else {
-				start++;
+				i++;
 			}
 		}
 	}
-
 	cout << count << "\n";
 }
